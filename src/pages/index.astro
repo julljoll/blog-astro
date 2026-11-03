@@ -1,8 +1,15 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import HeroCarousel from '../components/HeroCarousel.astro';
+import { CONTACT, SITE_DESCRIPTION, SITE_TITLE, STANDARDS } from '../consts';
+
+const latestPosts = (await getCollection('blog'))
+	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+	.slice(0, 3);
 ---
 
 <!doctype html>
@@ -13,144 +20,187 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<body>
 		<Header />
 		<main id="main-content">
-			<!-- USWDS Hero Section -->
-			<section class="usa-hero bg-primary-darker text-white padding-y-6" aria-label="Introducción Principal">
-				<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
-					<div class="usa-hero__callout bg-white text-base-darkest padding-4 radius-md maxw-mobile-lg shadow-2">
-						<span class="usa-tag bg-secondary-dark text-white margin-bottom-1">INFORMÁTICA FORENSE</span>
-						<h1 class="usa-hero__heading font-sans-2xl text-bold line-height-sans-2 text-primary-darker margin-top-0 margin-bottom-2">
-							Auditoría de dispositivos digitales
-						</h1>
-						<p class="font-sans-md text-base-dark line-height-sans-4 margin-bottom-3">
-							Precisa, confiable y profesional. Consolidamos medios de prueba judicial y analizamos evidencias digitales con tecnología de vanguardia para asegurar la validez legal de tus procesos.
-						</p>
-						<a class="usa-button usa-button--primary" href="#servicios">Conocer Servicios</a>
-						<a class="usa-button usa-button--outline margin-top-1 tablet:margin-top-0" href="/blog">Ver Blog</a>
+
+			<!-- ======= HERO CAROUSEL ======= -->
+			<HeroCarousel />
+
+			<!-- ======= TRUST BAR ======= -->
+			<section class="sha-trustbar">
+				<div class="sha-trustbar__inner">
+					<div class="sha-trust-item">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+						<span>ISO/IEC 27037</span>
+					</div>
+					<div class="sha-trust-item">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+						<span>ISO/IEC 27042</span>
+					</div>
+					<div class="sha-trust-item">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+						<span>NIST SP 800</span>
+					</div>
+					<div class="sha-trust-item">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>
+						<span>MUCC-2017 Venezuela</span>
+					</div>
+					<div class="sha-trust-item">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-7 9h-2V5h2v6zm0 4h-2v-2h2v2z"/></svg>
+						<span>Peritaje con Validez Judicial</span>
 					</div>
 				</div>
 			</section>
 
-			<!-- USWDS Services Section -->
-			<section id="servicios" class="padding-y-6 bg-white">
-				<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
-					<div class="text-center margin-bottom-5">
-						<h2 class="font-sans-xl text-bold text-primary-darker margin-bottom-1">Nuestros Servicios Principales</h2>
-						<p class="font-sans-md text-base line-height-sans-4 maxw-tablet margin-x-auto">
-							Análisis preliminar para diagnóstico por consignación y extracción experta de información.
-						</p>
+			<!-- ======= SERVICES ======= -->
+			<section id="servicios" class="sha-section bg-white">
+				<div class="sha-container">
+					<div class="sha-section__header text-center">
+						<span class="usa-tag sha-tag--primary">ÁREAS DE EXPERTICIA</span>
+						<h2 class="sha-section__title">Análisis Preliminar para el Diagnóstico por Consignación</h2>
+						<p class="sha-section__sub">Recuperación, validación y certificación forense de medios digitales para procesos corporativos y judiciales.</p>
 					</div>
 
-					<div class="grid-row grid-gap">
-						<div class="tablet:grid-col-6 margin-bottom-3 tablet:margin-bottom-0">
-							<div class="usa-card border-1px border-base-lighter radius-md padding-3 height-full shadow-1 bg-white">
-								<div class="display-flex flex-align-center margin-bottom-2">
-									<div class="bg-primary-light text-primary-darker padding-1 radius-md margin-right-2">
-										<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
-									</div>
-									<h3 class="font-sans-lg text-bold margin-0 text-primary-dark">Reparación, Extracción y Análisis</h3>
+					<div class="sha-card-grid">
+						<!-- Card 1 -->
+						<div class="sha-card">
+							<div class="sha-card__icon sha-card__icon--blue">
+								<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+							</div>
+							<div class="sha-card__body">
+								<h3 class="sha-card__title">Reparación, Extracción y Análisis</h3>
+								<p class="sha-card__sub">Unidades de Almacenamiento HDD, SSD, NVMe</p>
+								<p class="sha-card__text">Especialistas en la recuperación de información desde medios físicamente dañados o con corrupción lógica. Cada proceso incluye imagen forense bit a bit, verificación de hash SHA-256 e informe pericial.</p>
+								<a href="/servicios#almacenamiento" class="sha-link">Conocer protocolo de discos →</a>
+							</div>
+						</div>
+
+						<!-- Card 2 -->
+						<div class="sha-card">
+							<div class="sha-card__icon sha-card__icon--teal">
+								<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+							</div>
+							<div class="sha-card__body">
+								<h3 class="sha-card__title">Forense de Dispositivos Móviles</h3>
+								<p class="sha-card__sub">Smartphones, Tablets y Mensajería Digital</p>
+								<p class="sha-card__text">Extracción, descifrado y certificación de evidencias: audios, capturas, WhatsApp, Telegram, redes sociales y correos. Metodología conforme a ISO/IEC 27042 con cadena de custodia inviolable.</p>
+								<a href="/servicios#moviles" class="sha-link">Conocer validación de mensajería →</a>
+							</div>
+						</div>
+
+						<!-- Card 3 -->
+						<div class="sha-card">
+							<div class="sha-card__icon sha-card__icon--red">
+								<svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+							</div>
+							<div class="sha-card__body">
+								<h3 class="sha-card__title">Contratos y Documentos Digitales</h3>
+								<p class="sha-card__sub">Verificación de Autenticidad y Metadatos</p>
+								<p class="sha-card__text">Análisis forense de documentos electrónicos, firmas digitales, sellos de tiempo y metadatos para determinar origen, autoría y posibles alteraciones en controversias contractuales.</p>
+								<a href="/servicios" class="sha-link">Ver análisis documental →</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ======= PROCESS STEPS ======= -->
+			<section class="sha-section sha-section--light">
+				<div class="sha-container">
+					<div class="sha-section__header text-center">
+						<span class="usa-tag sha-tag--secondary">PROTOCOLO SEGURO</span>
+						<h2 class="sha-section__title">¿Qué debo hacer? — Primeros Pasos</h2>
+						<p class="sha-section__sub">Proceso formal y documentado para la recepción, adquisición y blindaje de la evidencia digital.</p>
+					</div>
+
+					<div class="sha-steps">
+						<div class="sha-step">
+							<div class="sha-step__num">01</div>
+							<div class="sha-step__connector sha-step__connector--primary"></div>
+							<h3 class="sha-step__title">Cuéntanos tu caso</h3>
+							<p class="sha-step__text">Entrevista técnica detallada para determinar qué información es jurídicamente relevante verificar para tu caso.</p>
+						</div>
+						<div class="sha-step">
+							<div class="sha-step__num">02</div>
+							<div class="sha-step__connector sha-step__connector--primary"></div>
+							<h3 class="sha-step__title">Consigna el dispositivo</h3>
+							<p class="sha-step__text">Recepción en laboratorio con emisión de planilla oficial. Se genera imagen forense bit a bit sin alterar el original.</p>
+						</div>
+						<div class="sha-step">
+							<div class="sha-step__num">03</div>
+							<div class="sha-step__connector sha-step__connector--primary"></div>
+							<h3 class="sha-step__title">Devolución ágil</h3>
+							<p class="sha-step__text">Retorno del equipo físico una vez completados los procedimientos técnico-administrativos básicos de laboratorio.</p>
+						</div>
+						<div class="sha-step">
+							<div class="sha-step__num">04</div>
+							<div class="sha-step__connector sha-step__connector--accent"></div>
+							<h3 class="sha-step__title">Planillas Oficiales</h3>
+							<p class="sha-step__text">Cadena de custodia inalterable, blindada conforme a MUCC-2017 para total validez ante tribunales nacionales.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- ======= STANDARDS ======= -->
+			<section class="sha-section bg-white">
+				<div class="sha-container">
+					<div class="sha-section__header text-center">
+						<span class="usa-tag sha-tag--primary">MARCO REGULATORIO</span>
+						<h2 class="sha-section__title">Normas Internacionales y Regulaciones Nacionales</h2>
+						<p class="sha-section__sub">La validez forense descansa en la metodología. Operamos bajo los estándares técnicos más exigentes del mundo.</p>
+					</div>
+					<div class="sha-standards-grid">
+						{STANDARDS.map((std) => (
+							<div class="sha-standard">
+								<div class="sha-standard__tag">{std.tag}</div>
+								<div class="sha-standard__code">{std.code}</div>
+								<div class="sha-standard__title">{std.title}</div>
+								<p class="sha-standard__desc">{std.desc}</p>
+							</div>
+						))}
+					</div>
+				</div>
+			</section>
+
+			<!-- ======= LATEST POSTS ======= -->
+			<section class="sha-section sha-section--light">
+				<div class="sha-container">
+					<div class="sha-section__header display-flex flex-wrap flex-justify-between flex-align-end">
+						<div>
+							<span class="usa-tag sha-tag--secondary">DIVULGACIÓN TÉCNICA</span>
+							<h2 class="sha-section__title margin-top-1 margin-bottom-0">Noticias & Casos de Investigación</h2>
+						</div>
+						<a href="/blog" class="usa-button usa-button--outline sha-btn-ghost margin-top-3 tablet:margin-top-0">Ver todo el Blog</a>
+					</div>
+					<div class="sha-blog-grid">
+						{latestPosts.map((post) => (
+							<div class="sha-blog-card">
+								<div class="sha-blog-card__date">
+									<FormattedDate date={post.data.pubDate} />
 								</div>
-								<p class="font-sans-sm text-base-dark line-height-sans-4">
-									Especializados en la reparación de unidades de almacenamiento dañadas para extraer la evidencia crucial para tu caso. Garantizamos una recuperación segura, estructurada e íntegra bajo estrictos procedimientos de laboratorio.
-								</p>
+								<h3 class="sha-blog-card__title">
+									<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+								</h3>
+								<p class="sha-blog-card__desc">{post.data.description}</p>
+								<a href={`/blog/${post.id}/`} class="sha-link">Leer artículo completo →</a>
 							</div>
-						</div>
-
-						<div class="tablet:grid-col-6">
-							<div class="usa-card border-1px border-base-lighter radius-md padding-3 height-full shadow-1 bg-white">
-								<div class="display-flex flex-align-center margin-bottom-2">
-									<div class="bg-accent-cool-light text-primary-darker padding-1 radius-md margin-right-2">
-										<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
-									</div>
-									<h3 class="font-sans-lg text-bold margin-0 text-primary-dark">Forense de Dispositivos Móviles</h3>
-								</div>
-								<p class="font-sans-sm text-base-dark line-height-sans-4">
-									Validación y adquisición forense certificada de audios, fotografías, capturas, mensajería instantánea (WhatsApp, Telegram), redes sociales y correos electrónicos con cadena de custodia inalterable.
-								</p>
-							</div>
-						</div>
+						))}
 					</div>
 				</div>
 			</section>
 
-			<!-- USWDS Process / Workflow Section -->
-			<section class="padding-y-6 bg-base-lightest">
-				<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
-					<div class="text-center margin-bottom-5">
-						<h2 class="font-sans-xl text-bold text-primary-darker margin-bottom-1">¿Qué debo hacer? — Primeros Pasos</h2>
-						<p class="font-sans-md text-base line-height-sans-4 maxw-tablet margin-x-auto">
-							Protocolo seguro y estructurado para la recepción y preservación de tu dispositivo.
-						</p>
+			<!-- ======= CTA CONTACT BANNER ======= -->
+			<section class="sha-cta-banner">
+				<div class="sha-container sha-cta-banner__inner">
+					<div class="sha-cta-banner__text">
+						<h2 class="sha-cta-banner__title">¿Necesitas consolidar un medio de prueba digital?</h2>
+						<p class="sha-cta-banner__sub">Comunícate con nuestro laboratorio forense para una evaluación preliminar confidencial y profesional.</p>
 					</div>
-
-					<div class="grid-row grid-gap">
-						<div class="tablet:grid-col-3 margin-bottom-2 tablet:margin-bottom-0">
-							<div class="bg-white padding-3 radius-md border-top-05 border-primary height-full shadow-1">
-								<span class="font-sans-2xl text-bold text-primary opacity-50 display-block margin-bottom-1">01</span>
-								<h3 class="font-sans-md text-bold margin-top-0 margin-bottom-1">Cuéntanos tu caso</h3>
-								<p class="font-sans-xs text-base-dark">Entrevista preliminar técnica para definir qué evidencia es jurídicamente relevante.</p>
-							</div>
-						</div>
-						<div class="tablet:grid-col-3 margin-bottom-2 tablet:margin-bottom-0">
-							<div class="bg-white padding-3 radius-md border-top-05 border-primary height-full shadow-1">
-								<span class="font-sans-2xl text-bold text-primary opacity-50 display-block margin-bottom-1">02</span>
-								<h3 class="font-sans-md text-bold margin-top-0 margin-bottom-1">Consigna el equipo</h3>
-								<p class="font-sans-xs text-base-dark">Recepción formal en laboratorio y generación de la copia bit a bit (imagen forense).</p>
-							</div>
-						</div>
-						<div class="tablet:grid-col-3 margin-bottom-2 tablet:margin-bottom-0">
-							<div class="bg-white padding-3 radius-md border-top-05 border-primary height-full shadow-1">
-								<span class="font-sans-2xl text-bold text-primary opacity-50 display-block margin-bottom-1">03</span>
-								<h3 class="font-sans-md text-bold margin-top-0 margin-bottom-1">Devolución rápida</h3>
-								<p class="font-sans-xs text-base-dark">Retorno del dispositivo físico tras los protocolos de adquisición inicial.</p>
-							</div>
-						</div>
-						<div class="tablet:grid-col-3">
-							<div class="bg-white padding-3 radius-md border-top-05 border-primary height-full shadow-1">
-								<span class="font-sans-2xl text-bold text-primary opacity-50 display-block margin-bottom-1">04</span>
-								<h3 class="font-sans-md text-bold margin-top-0 margin-bottom-1">Planillas Oficiales</h3>
-								<p class="font-sans-xs text-base-dark">Cadena de custodia blindada para plena validez legal y procesal en tribunales.</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<!-- USWDS Standards Compliance -->
-			<section class="padding-y-6 bg-white">
-				<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
-					<div class="text-center margin-bottom-4">
-						<h2 class="font-sans-xl text-bold text-primary-darker margin-bottom-1">Estándares Internacionales y Regulaciones</h2>
-						<p class="font-sans-md text-base line-height-sans-4">Rigor científico y metodológico en cada informe pericial.</p>
-					</div>
-
-					<div class="grid-row grid-gap">
-						<div class="mobile:grid-col-6 tablet:grid-col-3 margin-bottom-2">
-							<div class="border-1px border-base-light radius-md padding-2 bg-base-lightest text-center height-full">
-								<span class="usa-tag bg-primary text-white margin-bottom-1">ISO / IEC</span>
-								<h3 class="font-sans-md text-bold margin-y-05">IEC 27037</h3>
-								<p class="font-sans-3xs text-base margin-0">Directrices para la identificación, recopilación y preservación de evidencia digital.</p>
-							</div>
-						</div>
-						<div class="mobile:grid-col-6 tablet:grid-col-3 margin-bottom-2">
-							<div class="border-1px border-base-light radius-md padding-2 bg-base-lightest text-center height-full">
-								<span class="usa-tag bg-primary text-white margin-bottom-1">ISO / IEC</span>
-								<h3 class="font-sans-md text-bold margin-y-05">IEC 27042</h3>
-								<p class="font-sans-3xs text-base margin-0">Estándar para el análisis pericial y la interpretación de evidencia digital.</p>
-							</div>
-						</div>
-						<div class="mobile:grid-col-6 tablet:grid-col-3 margin-bottom-2">
-							<div class="border-1px border-base-light radius-md padding-2 bg-base-lightest text-center height-full">
-								<span class="usa-tag bg-secondary-dark text-white margin-bottom-1">NIST USA</span>
-								<h3 class="font-sans-md text-bold margin-y-05">NIST SP 800</h3>
-								<p class="font-sans-3xs text-base margin-0">Guías técnicas de informática forense para dispositivos y redes de NIST.</p>
-							</div>
-						</div>
-						<div class="mobile:grid-col-6 tablet:grid-col-3 margin-bottom-2">
-							<div class="border-1px border-base-light radius-md padding-2 bg-base-lightest text-center height-full">
-								<span class="usa-tag bg-accent-warm text-ink margin-bottom-1">NACIONAL</span>
-								<h3 class="font-sans-md text-bold margin-y-05">MUCC-2017</h3>
-								<p class="font-sans-3xs text-base margin-0">Manual Único para Cadena de Custodia de Evidencias Físicas y Digitales.</p>
-							</div>
+					<div class="sha-cta-banner__actions">
+						<a href="/contacto" class="usa-button usa-button--big sha-cta-banner__btn-primary">Contactar sha256.us</a>
+						<div class="sha-cta-banner__phones">
+							{CONTACT.phones.map((p) => (
+								<a href={p.link} class="sha-cta-banner__phone">{p.display}</a>
+							))}
 						</div>
 					</div>
 				</div>
@@ -159,3 +209,211 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 		<Footer />
 	</body>
 </html>
+
+<style>
+  /* ====== TRUSTBAR ====== */
+  .sha-trustbar {
+    background: #1a2b4b;
+    border-bottom: 2px solid #0050a4;
+  }
+  .sha-trustbar__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.75rem 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .sha-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    white-space: nowrap;
+  }
+  .sha-trust-item svg { color: #69b4e9; flex-shrink: 0; }
+
+  /* ====== SHARED LAYOUT ====== */
+  .sha-section { padding: 4.5rem 0; }
+  .sha-section--light { background-color: #f0f2f5; }
+  .sha-container { max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
+
+  .sha-section__header { margin-bottom: 2.5rem; }
+  .sha-section__title {
+    font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    color: #1a2b4b;
+    margin: 0.5rem 0 0.75rem 0;
+    line-height: 1.25;
+  }
+  .sha-section__sub {
+    font-size: 1rem;
+    color: #565c65;
+    max-width: 640px;
+    line-height: 1.6;
+    margin: 0 auto;
+  }
+
+  /* Tags */
+  .sha-tag--primary { background-color: #005ea2 !important; color: #fff !important; }
+  .sha-tag--secondary { background-color: #d83933 !important; color: #fff !important; }
+
+  /* ====== SERVICE CARDS ====== */
+  .sha-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .sha-card {
+    background: #fff;
+    border: 1px solid #dfe1e2;
+    border-top: 4px solid #005ea2;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: box-shadow 0.2s, transform 0.15s;
+  }
+  .sha-card:hover { box-shadow: 0 6px 20px rgba(0,0,0,0.1); transform: translateY(-2px); }
+  .sha-card__icon {
+    width: 52px; height: 52px;
+    border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .sha-card__icon--blue { background: #d9e8f6; color: #005ea2; }
+  .sha-card__icon--teal { background: #ccece9; color: #07706e; }
+  .sha-card__icon--red  { background: #f8dde0; color: #b50909; }
+  .sha-card__body { display: flex; flex-direction: column; gap: 0.35rem; flex: 1; }
+  .sha-card__title { font-size: 1.05rem; font-weight: 700; color: #1a2b4b; margin: 0; }
+  .sha-card__sub { font-size: 0.72rem; color: #71767a; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; margin: 0; }
+  .sha-card__text { font-size: 0.875rem; color: #3d4551; line-height: 1.65; margin: 0.25rem 0 auto 0; }
+  .sha-link { font-size: 0.82rem; font-weight: 700; color: #005ea2; text-decoration: none; margin-top: 0.75rem; display: inline-block; }
+  .sha-link:hover { color: #0050a4; text-decoration: underline; }
+
+  /* ====== PROCESS STEPS ====== */
+  .sha-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  .sha-step {
+    background: #fff;
+    border: 1px solid #dfe1e2;
+    padding: 1.75rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .sha-step::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 4px;
+    background: #005ea2;
+  }
+  .sha-step:last-child::before { background: #d83933; }
+  .sha-step__num {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #005ea2;
+    opacity: 0.15;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    font-variant-numeric: tabular-nums;
+  }
+  .sha-step:last-child .sha-step__num { color: #d83933; }
+  .sha-step__connector { display: none; }
+  .sha-step__title { font-size: 1rem; font-weight: 700; color: #1a2b4b; margin: 0 0 0.5rem 0; }
+  .sha-step__text { font-size: 0.875rem; color: #3d4551; line-height: 1.65; margin: 0; }
+
+  /* ====== STANDARDS ====== */
+  .sha-standards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+  .sha-standard {
+    border: 1px solid #dfe1e2;
+    border-top: 4px solid #1a2b4b;
+    padding: 1.5rem;
+    background: #f0f2f5;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .sha-standard__tag {
+    font-size: 0.62rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    background: #1a2b4b;
+    color: #fff;
+    padding: 0.18rem 0.5rem;
+    display: inline-block;
+    align-self: flex-start;
+  }
+  .sha-standard__code { font-size: 1.1rem; font-weight: 800; color: #1a2b4b; margin-top: 0.4rem; }
+  .sha-standard__title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #565c65; letter-spacing: 0.05em; }
+  .sha-standard__desc { font-size: 0.8rem; color: #3d4551; line-height: 1.6; margin: 0.35rem 0 0 0; }
+
+  /* ====== BLOG CARDS ====== */
+  .sha-blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  .sha-blog-card {
+    background: #fff;
+    border: 1px solid #dfe1e2;
+    border-left: 4px solid #005ea2;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    transition: box-shadow 0.2s;
+  }
+  .sha-blog-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
+  .sha-blog-card__date { font-size: 0.72rem; color: #71767a; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+  .sha-blog-card__title { font-size: 1rem; font-weight: 700; margin: 0; line-height: 1.35; }
+  .sha-blog-card__title a { color: #1a2b4b; text-decoration: none; }
+  .sha-blog-card__title a:hover { color: #005ea2; text-decoration: underline; }
+  .sha-blog-card__desc { font-size: 0.85rem; color: #3d4551; line-height: 1.6; margin: 0; flex: 1; }
+
+  /* Ghost button */
+  .sha-btn-ghost {
+    border-color: #005ea2 !important;
+    color: #005ea2 !important;
+  }
+  .sha-btn-ghost:hover {
+    background: #005ea2 !important;
+    color: #fff !important;
+  }
+
+  /* ====== CTA BANNER ====== */
+  .sha-cta-banner { background: linear-gradient(135deg, #1a2b4b 0%, #0050a4 100%); padding: 3.5rem 0; }
+  .sha-cta-banner__inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+  .sha-cta-banner__text { flex: 1; min-width: 280px; }
+  .sha-cta-banner__title { font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 700; color: #fff; margin: 0 0 0.5rem 0; }
+  .sha-cta-banner__sub { font-size: 0.9rem; color: rgba(255,255,255,0.78); line-height: 1.6; margin: 0; }
+  .sha-cta-banner__actions { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+  .sha-cta-banner__btn-primary {
+    background: #d83933 !important;
+    border-color: #d83933 !important;
+    color: #fff !important;
+    white-space: nowrap;
+  }
+  .sha-cta-banner__btn-primary:hover { background: #b50909 !important; border-color: #b50909 !important; }
+  .sha-cta-banner__phones { display: flex; flex-direction: column; gap: 0.2rem; }
+  .sha-cta-banner__phone { font-size: 0.82rem; color: rgba(255,255,255,0.7); text-decoration: none; }
+  .sha-cta-banner__phone:hover { color: #fff; }
+</style>

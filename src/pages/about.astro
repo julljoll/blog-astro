@@ -1,47 +1,97 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { CONTACT, SITE_TITLE, STANDARDS } from '../consts';
 ---
 
-<Layout
-	title="Sobre sha256.us"
-	description="Laboratorio especializado en informática forense, análisis de evidencias digitales y cumplimiento normativo."
-	pubDate={new Date('November 03 2024')}
-	heroImage={AboutHeroImage}
->
-	<section class="usa-intro margin-bottom-4">
-		<p class="font-sans-lg text-bold text-primary-darker">
-			En <strong>sha256.us</strong> somos un equipo profesional especializado en informática forense, análisis pericial y diagnóstico por consignación de evidencias digitales.
-		</p>
-	</section>
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead
+			title={`Sobre Nosotros | ${SITE_TITLE}`}
+			description="Conoce al equipo de sha256.us. Especialistas en informática forense, análisis de evidencias digitales, cadena de custodia y normativas ISO/NIST."
+		/>
+	</head>
+	<body class="bg-base-lightest font-sans">
+		<Header />
+		<main id="main-content" class="padding-y-6">
+			<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+				<!-- Header de página -->
+				<div class="margin-bottom-6 border-bottom-2px border-base-lighter padding-bottom-3">
+					<nav class="usa-breadcrumb margin-bottom-2" aria-label="Breadcrumbs">
+						<ol class="usa-breadcrumb__list display-flex list-style-none padding-0 margin-0 font-sans-xs">
+							<li class="usa-breadcrumb__item margin-right-1"><a href="/" class="usa-breadcrumb__link text-primary">Inicio</a> &gt;</li>
+							<li class="usa-breadcrumb__item usa-current text-base" aria-current="page">Sobre Nosotros</li>
+						</ol>
+					</nav>
+					<span class="usa-tag bg-primary text-white margin-bottom-1">CONÓCENOS</span>
+					<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
+						Sobre sha256.us — Análisis Forense Digital Seguro
+					</h1>
+					<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet">
+						Somos un equipo profesional multidisciplinario comprometido con la rigurosidad científica, la ética y la inviolabilidad de la evidencia digital.
+					</p>
+				</div>
 
-	<h2>Nuestra Misión</h2>
-	<p>
-		Proporcionar certezas técnicas y jurídicamente defendibles en entornos procesales y judiciales. Analizamos evidencias digitales con tecnología avanzada y un equipo altamente capacitado para garantizar la validez, integridad e inalterabilidad de los informes legales.
-	</p>
+				<div class="grid-row grid-gap margin-bottom-8">
+					<div class="tablet:grid-col-8">
+						<div class="bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter margin-bottom-4">
+							<h2 class="font-sans-xl text-bold text-primary-darker margin-top-0 margin-bottom-2">Nuestra Misión Institucional</h2>
+							<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
+								En <strong>sha256.us</strong> analizamos evidencias digitales empleando tecnología avanzada y metodología forense estandarizada para garantizar que cualquier elemento de prueba mantenga su integridad, autenticidad e inalterabilidad frente a tribunales y órganos judiciales.
+							</p>
+							<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
+								Nuestro nombre, inspirado en la función criptográfica <strong>SHA-256</strong>, refleja el pilar central de nuestra práctica: la garantía matemática e irreversible de que los datos consignados no han sido alterados ni manipulados en ninguna fase de la investigación.
+							</p>
 
-	<h2>Marco Normativo y Rigor Técnico</h2>
-	<p>
-		Nuestras metodologías están alineadas rigurosamente con los principales estándares y manuales tanto a nivel nacional como internacional:
-	</p>
-	<ul>
-		<li><strong>ISO/IEC 27037:</strong> Directrices para la identificación, recopilación, adquisición y preservación de evidencia digital.</li>
-		<li><strong>ISO/IEC 27042:</strong> Estándar internacional que regula el análisis y la interpretación de la evidencia digital tras su adquisición.</li>
-		<li><strong>NIST SP 800:</strong> Directrices de informática forense para dispositivos móviles e infraestructura de red emitidas por el National Institute of Standards and Technology.</li>
-		<li><strong>MUCC-2017:</strong> Manual Único para la Cadena de Custodia de Evidencias Físicas y Digitales de la República Bolivariana de Venezuela.</li>
-	</ul>
+							<h2 class="font-sans-xl text-bold text-primary-darker margin-top-4 margin-bottom-2">Equipo Profesional y Experiencia</h2>
+							<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3">
+								Contamos con años de experiencia en la intervención de dispositivos comprometidos, peritajes judiciales en controversias civiles y penales, así como diagnósticos especializados por consignación técnica en laboratorio.
+							</p>
 
-	<h2>Infraestructura y Sede</h2>
-	<p>
-		Contamos con instalaciones acondicionadas para la custodia segura de dispositivos electrónicos y discos bajo estrictas condiciones de control de acceso físico y lógico:
-	</p>
-	<div class="usa-alert usa-alert--info margin-y-3 radius-md">
-		<div class="usa-alert__body">
-			<h3 class="usa-alert__heading">Sede Principal</h3>
-			<p class="usa-alert__text font-sans-sm">
-				Avenida 6 con Calle 7, Edificio Mercantil La Ceiba, Primer Piso, Oficina N° 8, Quíbor, Estado Lara, Venezuela.<br/>
-				<strong>Contacto directo:</strong> +58 424 5585474 / +57 316 3931945 &bull; <strong>Email:</strong> soporte@sha256.us
-			</p>
-		</div>
-	</div>
-</Layout>
+							<div class="usa-alert usa-alert--info radius-md margin-top-4">
+								<div class="usa-alert__body">
+									<h3 class="usa-alert__heading font-sans-sm text-bold">Instalaciones y Cadena de Custodia</h3>
+									<p class="usa-alert__text font-sans-xs line-height-sans-3">
+										Nuestra sede principal en Quíbor, Estado Lara, cuenta con área técnica para la recepción y resguardo controlado de dispositivos bajo planillas oficiales de cadena de custodia (MUCC-2017).
+									</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- Sidebar con normas y contacto rápido -->
+					<div class="tablet:grid-col-4">
+						<div class="bg-white padding-4 radius-lg shadow-1 border-1px border-base-lighter margin-bottom-4">
+							<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-2">Acreditaciones Técnicas</h3>
+							<ul class="list-style-none padding-0 margin-0">
+								{STANDARDS.map((s) => (
+									<li class="border-bottom-1px border-base-lighter padding-y-2">
+										<span class="usa-tag bg-primary-lighter text-primary-darker font-sans-3xs text-bold margin-bottom-05">{s.tag}</span>
+										<strong class="font-sans-xs text-primary-darker display-block">{s.code}</strong>
+										<span class="font-sans-3xs text-base-dark">{s.title}</span>
+									</li>
+								))}
+							</ul>
+						</div>
+
+						<div class="bg-primary-darker text-white padding-4 radius-lg shadow-1">
+							<h3 class="font-sans-md text-bold text-white margin-top-0 margin-bottom-2">Contacto Directo</h3>
+							<p class="font-sans-xs text-base-light margin-y-1">
+								<strong>Sede:</strong> {CONTACT.address}
+							</p>
+							<p class="font-sans-xs text-base-light margin-y-1">
+								<strong>Email:</strong> {CONTACT.email}
+							</p>
+							<div class="margin-top-3">
+								<a href="/contacto" class="usa-button usa-button--secondary width-full text-center">Ir a Contacto</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>

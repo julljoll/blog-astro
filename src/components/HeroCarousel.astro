@@ -1,0 +1,379 @@
+---
+// HeroCarousel.astro
+// 5 slides: Digital Forensics | Digital Contracts | Compliance Officer | Legal Data Analysis | Cybersecurity Lab
+const slides = [
+  {
+    id: 1,
+    img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=1400&q=80",
+    tag: "INFORMÁTICA FORENSE",
+    title: "Auditoría de Dispositivos Digitales",
+    desc: "Recuperamos, validamos y certificamos evidencias digitales con cadena de custodia inviolable para juicios y procesos legales.",
+    cta1: { label: "Nuestros Servicios", href: "/servicios" },
+    cta2: { label: "Solicitar Peritaje", href: "/contacto" },
+  },
+  {
+    id: 2,
+    img: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1400&q=80",
+    tag: "CONTRATOS DIGITALES",
+    title: "Análisis y Peritaje de Documentos Electrónicos",
+    desc: "Verificación forense de contratos digitales, firmas electrónicas y metadatos de documentos con validez procesal ante tribunales.",
+    cta1: { label: "Conocer el Proceso", href: "/servicios" },
+    cta2: { label: "Contáctanos", href: "/contacto" },
+  },
+  {
+    id: 3,
+    img: "https://images.unsplash.com/photo-1551434678-e076c223a692?w=1400&q=80",
+    tag: "COMPLIANCE OFFICER",
+    title: "Soporte Técnico para Cumplimiento Normativo",
+    desc: "Asesoramos a oficiales de cumplimiento con evidencias digitales bajo ISO/IEC 27037, ISO/IEC 27042, NIST SP 800 y MUCC-2017.",
+    cta1: { label: "Ver Estándares", href: "/about" },
+    cta2: { label: "Solicitar Asesoría", href: "/contacto" },
+  },
+  {
+    id: 4,
+    img: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1400&q=80",
+    tag: "ANÁLISIS DE DATOS JURÍDICOS",
+    title: "Validación Pericial de Datos e Información Legal",
+    desc: "Aplicamos metodologías avanzadas para el análisis técnico-jurídico de registros, metadatos y trazas digitales en controversias corporativas.",
+    cta1: { label: "Cómo Trabajamos", href: "/servicios" },
+    cta2: { label: "Blog Técnico", href: "/blog" },
+  },
+  {
+    id: 5,
+    img: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1400&q=80",
+    tag: "LABORATORIO FORENSE DIGITAL",
+    title: "Tecnología de Punta para la Verdad Digital",
+    desc: "Equipamiento especializado y protocolos de nivel internacional para la adquisición, preservación y análisis de medios digitales.",
+    cta1: { label: "Conocer sha256.us", href: "/about" },
+    cta2: { label: "Solicitar Recepción", href: "/contacto" },
+  },
+];
+---
+
+<div class="sha-carousel" id="heroCarousel" role="region" aria-label="Presentación del laboratorio sha256.us" aria-roledescription="carrusel">
+
+  <!-- Slides -->
+  {slides.map((slide, i) => (
+    <div
+      class={`sha-carousel__slide${i === 0 ? ' is-active' : ''}`}
+      id={`slide-${slide.id}`}
+      role="group"
+      aria-roledescription="slide"
+      aria-label={`Diapositiva ${slide.id} de ${slides.length}: ${slide.tag}`}
+      style={`background-image: url('${slide.img}');`}
+    >
+      <!-- Dark overlay for readability -->
+      <div class="sha-carousel__overlay"></div>
+
+      <!-- Content -->
+      <div class="sha-carousel__content grid-container maxw-desktop margin-x-auto padding-x-2 padding-y-0">
+        <div class="sha-carousel__callout">
+          <span class="usa-tag sha-carousel__tag">{slide.tag}</span>
+          <h1 class="sha-carousel__heading">{slide.title}</h1>
+          <p class="sha-carousel__desc">{slide.desc}</p>
+          <div class="sha-carousel__actions">
+            <a href={slide.cta1.href} class="usa-button usa-button--big sha-btn-primary">{slide.cta1.label}</a>
+            <a href={slide.cta2.href} class="usa-button usa-button--outline sha-btn-outline">{slide.cta2.label}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  ))}
+
+  <!-- Navigation Arrows -->
+  <button class="sha-carousel__btn sha-carousel__btn--prev" aria-label="Diapositiva anterior" id="carouselPrev">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="15 18 9 12 15 6"></polyline>
+    </svg>
+  </button>
+  <button class="sha-carousel__btn sha-carousel__btn--next" aria-label="Diapositiva siguiente" id="carouselNext">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="9 18 15 12 9 6"></polyline>
+    </svg>
+  </button>
+
+  <!-- Dot Indicators -->
+  <div class="sha-carousel__dots" role="tablist" aria-label="Seleccionar diapositiva">
+    {slides.map((slide, i) => (
+      <button
+        class={`sha-carousel__dot${i === 0 ? ' is-active' : ''}`}
+        role="tab"
+        aria-selected={i === 0 ? "true" : "false"}
+        aria-label={`Ir a diapositiva ${slide.id}`}
+        data-index={i}
+      ></button>
+    ))}
+  </div>
+
+  <!-- Slide Counter -->
+  <div class="sha-carousel__counter" aria-live="polite" aria-atomic="true">
+    <span id="currentSlide">1</span> / {slides.length}
+  </div>
+</div>
+
+<style>
+  /* ==================== CAROUSEL CORE ==================== */
+  .sha-carousel {
+    position: relative;
+    width: 100%;
+    height: 520px;
+    overflow: hidden;
+    background: #1a2b4b;
+  }
+
+  @media (max-width: 640px) {
+    .sha-carousel { height: 420px; }
+  }
+  @media (min-width: 1024px) {
+    .sha-carousel { height: 580px; }
+  }
+
+  /* Slides */
+  .sha-carousel__slide {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 0.7s ease-in-out;
+    pointer-events: none;
+  }
+  .sha-carousel__slide.is-active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* Dark overlay */
+  .sha-carousel__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      135deg,
+      rgba(0, 36, 80, 0.82) 0%,
+      rgba(0, 36, 80, 0.55) 60%,
+      rgba(0, 0, 0, 0.25) 100%
+    );
+  }
+
+  /* Content container */
+  .sha-carousel__content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    padding-left: max(1rem, calc((100% - 1200px) / 2));
+    padding-right: max(1rem, calc((100% - 1200px) / 2));
+  }
+
+  /* Callout box */
+  .sha-carousel__callout {
+    max-width: 580px;
+    padding: 0;
+  }
+
+  /* Tag */
+  .sha-carousel__tag {
+    background-color: #d83933 !important;
+    color: #fff !important;
+    font-size: 0.7rem;
+    letter-spacing: 0.08em;
+    font-weight: 700;
+    padding: 0.25rem 0.6rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+  }
+
+  /* Heading */
+  .sha-carousel__heading {
+    font-size: clamp(1.6rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.2;
+    margin: 0 0 1rem 0;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+
+  /* Description */
+  .sha-carousel__desc {
+    font-size: clamp(0.875rem, 1.5vw, 1rem);
+    color: rgba(255,255,255,0.88);
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+    max-width: 500px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  }
+
+  /* CTA Actions */
+  .sha-carousel__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  /* Primary CTA Button */
+  .sha-btn-primary {
+    background-color: #005ea2 !important;
+    color: #fff !important;
+    border: 2px solid #005ea2 !important;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.2s, transform 0.15s;
+    white-space: nowrap;
+    border-radius: 0;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+  .sha-btn-primary:hover {
+    background-color: #0050a4 !important;
+    transform: translateY(-1px);
+  }
+
+  /* Outline CTA Button */
+  .sha-btn-outline {
+    background-color: transparent !important;
+    color: #fff !important;
+    border: 2px solid rgba(255,255,255,0.85) !important;
+    font-weight: 700;
+    padding: 0.75rem 1.5rem;
+    transition: background-color 0.2s, border-color 0.2s, transform 0.15s;
+    white-space: nowrap;
+    border-radius: 0;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+  }
+  .sha-btn-outline:hover {
+    background-color: rgba(255,255,255,0.12) !important;
+    border-color: #fff !important;
+    transform: translateY(-1px);
+  }
+
+  /* ==================== NAVIGATION ARROWS ==================== */
+  .sha-carousel__btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0,36,80,0.6);
+    border: 2px solid rgba(255,255,255,0.3);
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    border-radius: 0;
+  }
+  .sha-carousel__btn:hover {
+    background: rgba(0,94,162,0.85);
+    border-color: rgba(255,255,255,0.7);
+  }
+  .sha-carousel__btn--prev { left: 1rem; }
+  .sha-carousel__btn--next { right: 1rem; }
+
+  @media (max-width: 480px) {
+    .sha-carousel__btn { width: 38px; height: 38px; }
+    .sha-carousel__btn--prev { left: 0.5rem; }
+    .sha-carousel__btn--next { right: 0.5rem; }
+  }
+
+  /* ==================== DOT INDICATORS ==================== */
+  .sha-carousel__dots {
+    position: absolute;
+    bottom: 1.25rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 10;
+  }
+
+  .sha-carousel__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    border: 2px solid rgba(255,255,255,0.6);
+    cursor: pointer;
+    transition: background 0.25s, transform 0.2s;
+    padding: 0;
+  }
+  .sha-carousel__dot.is-active {
+    background: #fff;
+    transform: scale(1.25);
+    border-color: #fff;
+  }
+  .sha-carousel__dot:hover { background: rgba(255,255,255,0.75); }
+
+  /* ==================== SLIDE COUNTER ==================== */
+  .sha-carousel__counter {
+    position: absolute;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.7);
+    font-weight: 600;
+    z-index: 10;
+    letter-spacing: 0.05em;
+  }
+</style>
+
+<script>
+  (function () {
+    const carousel = document.getElementById('heroCarousel');
+    if (!carousel) return;
+
+    const slides = carousel.querySelectorAll('.sha-carousel__slide');
+    const dots = carousel.querySelectorAll('.sha-carousel__dot');
+    const counter = carousel.querySelector('#currentSlide');
+    const prevBtn = carousel.querySelector('#carouselPrev');
+    const nextBtn = carousel.querySelector('#carouselNext');
+
+    let current = 0;
+    let autoTimer: ReturnType<typeof setInterval>;
+
+    function goTo(index: number) {
+      slides[current].classList.remove('is-active');
+      dots[current].classList.remove('is-active');
+      (dots[current] as HTMLElement).setAttribute('aria-selected', 'false');
+
+      current = (index + slides.length) % slides.length;
+
+      slides[current].classList.add('is-active');
+      dots[current].classList.add('is-active');
+      (dots[current] as HTMLElement).setAttribute('aria-selected', 'true');
+      if (counter) counter.textContent = String(current + 1);
+    }
+
+    function startAuto() {
+      clearInterval(autoTimer);
+      autoTimer = setInterval(() => goTo(current + 1), 5000);
+    }
+
+    prevBtn?.addEventListener('click', () => { goTo(current - 1); startAuto(); });
+    nextBtn?.addEventListener('click', () => { goTo(current + 1); startAuto(); });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { goTo(i); startAuto(); });
+    });
+
+    // Keyboard
+    carousel.addEventListener('keydown', (e: Event) => {
+      const ke = e as KeyboardEvent;
+      if (ke.key === 'ArrowLeft') { goTo(current - 1); startAuto(); }
+      if (ke.key === 'ArrowRight') { goTo(current + 1); startAuto(); }
+    });
+
+    // Pause on hover
+    carousel.addEventListener('mouseenter', () => clearInterval(autoTimer));
+    carousel.addEventListener('mouseleave', startAuto);
+
+    startAuto();
+  })();
+</script>
+

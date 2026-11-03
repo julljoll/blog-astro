@@ -15,25 +15,37 @@ const posts = (await getCollection('blog')).sort(
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={`Blog & Casos - ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
+		<BaseHead title={`Blog & Casos de Estudio | ${SITE_TITLE}`} description={SITE_DESCRIPTION} />
 	</head>
-	<body>
+	<body class="bg-base-lightest font-sans">
 		<Header />
-		<main id="main-content" class="padding-y-5">
+		<main id="main-content" class="padding-y-6">
 			<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
-				<div class="margin-bottom-4 border-bottom-2px border-base-lighter padding-bottom-2">
-					<span class="usa-tag bg-primary text-white margin-bottom-1">sha256.us Publicaciones</span>
-					<h1 class="font-sans-2xl text-bold text-primary-darker margin-top-0 margin-bottom-1">Artículos & Novedades Técnicas</h1>
-					<p class="font-sans-md text-base margin-0">Noticias de computación cuántica, análisis forense digital y estándares de seguridad.</p>
+				<!-- Header de Blog -->
+				<div class="margin-bottom-6 border-bottom-2px border-base-lighter padding-bottom-3">
+					<nav class="usa-breadcrumb margin-bottom-2" aria-label="Breadcrumbs">
+						<ol class="usa-breadcrumb__list display-flex list-style-none padding-0 margin-0 font-sans-xs">
+							<li class="usa-breadcrumb__item margin-right-1"><a href="/" class="usa-breadcrumb__link text-primary">Inicio</a> &gt;</li>
+							<li class="usa-breadcrumb__item usa-current text-base" aria-current="page">Blog</li>
+						</ol>
+					</nav>
+					<span class="usa-tag bg-primary text-white margin-bottom-1">sha256.us ARTÍCULOS</span>
+					<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
+						Blog & Publicaciones Técnicas
+					</h1>
+					<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet">
+						Artículos sobre informática forense, computación cuántica, algoritmos criptográficos, cadena de custodia y normativas ISO/NIST.
+					</p>
 				</div>
 
+				<!-- Grid de Artículos con Tarjetas USWDS -->
 				<ul class="usa-card-group grid-row grid-gap list-style-none padding-0 margin-0">
 					{posts.map((post) => (
 						<li class="tablet:grid-col-6 desktop:grid-col-4 margin-bottom-4 display-flex">
-							<div class="usa-card border-1px border-base-lighter radius-md overflow-hidden bg-white shadow-1 display-flex flex-column width-full">
-								<div class="usa-card__media">
-									<a href={`/blog/${post.id}/`} class="display-block overflow-hidden">
-										{post.data.heroImage && (
+							<div class="usa-card border-1px border-base-lighter radius-lg overflow-hidden bg-white shadow-1 display-flex flex-column width-full hover:shadow-2 transition">
+								{post.data.heroImage && (
+									<div class="usa-card__media">
+										<a href={`/blog/${post.id}/`} class="display-block overflow-hidden">
 											<Image
 												width={720}
 												height={360}
@@ -41,22 +53,25 @@ const posts = (await getCollection('blog')).sort(
 												alt={post.data.title}
 												class="width-full height-auto display-block"
 											/>
-										)}
-									</a>
-								</div>
-								<div class="usa-card__body padding-3 display-flex flex-column flex-1">
-									<span class="font-sans-3xs text-base-light margin-bottom-1">
-										<FormattedDate date={post.data.pubDate} />
-									</span>
-									<h2 class="font-sans-md text-bold margin-top-0 margin-bottom-1">
+										</a>
+									</div>
+								)}
+								<div class="usa-card__body padding-4 display-flex flex-column flex-1">
+									<div class="display-flex flex-align-center flex-justify-between margin-bottom-1">
+										<span class="usa-tag bg-base-light text-base-darkest font-sans-3xs">Investigación</span>
+										<span class="font-sans-3xs text-base-light">
+											<FormattedDate date={post.data.pubDate} />
+										</span>
+									</div>
+									<h2 class="font-sans-md text-bold margin-top-1 margin-bottom-2 line-height-sans-2">
 										<a href={`/blog/${post.id}/`} class="text-primary-darker text-no-underline hover:text-primary">
 											{post.data.title}
 										</a>
 									</h2>
-									<p class="font-sans-xs text-base line-height-sans-3 margin-top-0 margin-bottom-3 flex-1">
+									<p class="font-sans-xs text-base-dark line-height-sans-4 margin-top-0 margin-bottom-4 flex-1">
 										{post.data.description}
 									</p>
-									<a href={`/blog/${post.id}/`} class="usa-button usa-button--outline width-full text-center">
+									<a href={`/blog/${post.id}/`} class="usa-button usa-button--outline width-full text-center margin-0">
 										Leer artículo
 									</a>
 								</div>

@@ -1,0 +1,124 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { CONTACT, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead
+			title={`Servicios Forenses Digitales | ${SITE_TITLE}`}
+			description="Reparación, extracción y análisis forense de discos, memorias y dispositivos móviles. Validación pericial de WhatsApp, Telegram, audios y capturas."
+		/>
+	</head>
+	<body class="bg-base-lightest font-sans">
+		<Header />
+		<main id="main-content" class="padding-y-6">
+			<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+				<!-- Header de página -->
+				<div class="margin-bottom-6 border-bottom-2px border-base-lighter padding-bottom-3">
+					<nav class="usa-breadcrumb margin-bottom-2" aria-label="Breadcrumbs">
+						<ol class="usa-breadcrumb__list display-flex list-style-none padding-0 margin-0 font-sans-xs">
+							<li class="usa-breadcrumb__item margin-right-1"><a href="/" class="usa-breadcrumb__link text-primary">Inicio</a> &gt;</li>
+							<li class="usa-breadcrumb__item usa-current text-base" aria-current="page">Servicios</li>
+						</ol>
+					</nav>
+					<span class="usa-tag bg-primary text-white margin-bottom-1">SERVICIOS ESPECIALIZADOS</span>
+					<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
+						Auditoría, Extracción y Análisis Forense Digital
+					</h1>
+					<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet">
+						Metodologías científicas de laboratorio para extraer la información vital requerida en juicios, controversias corporativas y resolución de incidentes.
+					</p>
+				</div>
+
+				<!-- Servicio 1: Almacenamiento -->
+				<section id="almacenamiento" class="margin-bottom-8 bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
+					<div class="grid-row grid-gap flex-align-center">
+						<div class="tablet:grid-col-8">
+							<span class="usa-tag bg-primary-dark text-white margin-bottom-1">UNIDADES DE ALMACENAMIENTO</span>
+							<h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
+								Reparación, Extracción y Análisis Forense
+							</h2>
+							<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
+								Nos especializamos en la reparación técnica de unidades de almacenamiento masivo que presentan fallas físicas o daño lógico:
+							</p>
+							<ul class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-3 padding-left-3">
+								<li><strong>Discos duros mecánicos (HDD):</strong> Recuperación en caso de fallos de cabezal, PCB o daño en platos magnéticos.</li>
+								<li><strong>Unidades de estado sólido (SSD, NVMe, M.2):</strong> Lectura a nivel de chip NAND y reconstrucción de particiones dañadas.</li>
+								<li><strong>Memorias Flash y servidores RAID:</strong> Extracción forense con cálculo simultáneo de algoritmos hash de integridad (SHA-256, MD5).</li>
+							</ul>
+							<div class="usa-alert usa-alert--info radius-md margin-top-3">
+								<div class="usa-alert__body">
+									<h4 class="usa-alert__heading font-sans-xs text-bold">Integridad de la prueba</h4>
+									<p class="usa-alert__text font-sans-3xs">
+										Ningún procedimiento se realiza sobre el medio original. Creamos imágenes forenses bit a bit bloqueadas contra escritura conforme a la norma ISO/IEC 27037.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="tablet:grid-col-4 display-flex flex-column flex-center text-center">
+							<div class="bg-primary-lighter padding-4 radius-lg width-full border-1px border-primary-light">
+								<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">¿Tienes un disco dañado?</h3>
+								<p class="font-sans-xs text-base-dark margin-bottom-3">Consígnalo de forma segura para un diagnóstico preliminar.</p>
+								<a href="/contacto" class="usa-button usa-button--primary width-full">Solicitar Recepción</a>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Servicio 2: Dispositivos Móviles -->
+				<section id="moviles" class="margin-bottom-8 bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
+					<div class="grid-row grid-gap flex-align-center">
+						<div class="tablet:grid-col-8">
+							<span class="usa-tag bg-secondary-dark text-white margin-bottom-1">DISPOSITIVOS MÓVILES</span>
+							<h2 class="font-sans-xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
+								Reparación, Extracción y Análisis de Smartphones y Tablets
+							</h2>
+							<p class="font-sans-sm text-base-dark line-height-sans-4 margin-bottom-2">
+								Los dispositivos móviles albergan la evidencia digital más determinante en el ámbito civil, mercantil y penal. Nuestro equipo cuenta con herramientas de nivel forense para validar y certificar:
+							</p>
+							<div class="grid-row grid-gap margin-bottom-3">
+								<div class="mobile:grid-col-6">
+									<div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
+										<strong class="font-sans-xs text-primary-darker display-block">Mensajería Instantánea</strong>
+										<span class="font-sans-3xs text-base">WhatsApp, Telegram, Signal, chats eliminados y metadatos.</span>
+									</div>
+								</div>
+								<div class="mobile:grid-col-6">
+									<div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
+										<strong class="font-sans-xs text-primary-darker display-block">Audios e Imágenes</strong>
+										<span class="font-sans-3xs text-base">Notas de voz, fotografías, capturas y verificación de marca de tiempo (timestamp).</span>
+									</div>
+								</div>
+								<div class="mobile:grid-col-6">
+									<div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
+										<strong class="font-sans-xs text-primary-darker display-block">Redes Sociales</strong>
+										<span class="font-sans-3xs text-base">Interacciones en Instagram, Facebook, X (Twitter), TikTok y registros web.</span>
+									</div>
+								</div>
+								<div class="mobile:grid-col-6">
+									<div class="bg-base-lightest padding-2 radius-md border-left-05 border-primary margin-bottom-2">
+										<strong class="font-sans-xs text-primary-darker display-block">Correos y Mensajes de Texto</strong>
+										<span class="font-sans-3xs text-base">SMS nativos, bandejas de correo electrónico y registros de llamadas.</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="tablet:grid-col-4 display-flex flex-column flex-center text-center">
+							<div class="bg-accent-cool-lighter padding-4 radius-lg width-full border-1px border-accent-cool-light">
+								<h3 class="font-sans-md text-bold text-primary-darker margin-top-0 margin-bottom-1">Peritaje de Móvil</h3>
+								<p class="font-sans-xs text-base-dark margin-bottom-3">Extracción física y lógica con cadena de custodia formal.</p>
+								<a href="/contacto" class="usa-button usa-button--secondary width-full">Consultar con Perito</a>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+

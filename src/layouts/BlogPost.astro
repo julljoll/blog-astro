@@ -11,15 +11,17 @@ type Props = CollectionEntry<'blog'>['data'];
 const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="es">
 	<head>
 		<BaseHead title={`${title} | sha256.us`} description={description} />
 	</head>
 
-	<body>
+	<body class="bg-base-lightest font-sans">
 		<Header />
-		<main id="main-content" class="padding-y-5">
+		<main id="main-content" class="padding-y-6">
 			<article class="grid-container maxw-tablet margin-x-auto padding-x-2">
+				<!-- USWDS Breadcrumb -->
 				<nav class="usa-breadcrumb margin-bottom-3" aria-label="Breadcrumbs">
 					<ol class="usa-breadcrumb__list display-flex list-style-none padding-0 margin-0 font-sans-xs">
 						<li class="usa-breadcrumb__item margin-right-1">
@@ -32,28 +34,31 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 					</ol>
 				</nav>
 
+				<!-- Encabezado del artículo -->
 				<header class="margin-bottom-4 border-bottom-1px border-base-lighter padding-bottom-3">
 					<span class="usa-tag bg-primary-dark text-white margin-bottom-1">Publicación Técnica</span>
-					<h1 class="font-sans-2xl text-bold text-primary-darker line-height-sans-2 margin-top-1 margin-bottom-2">
+					<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker line-height-sans-2 margin-top-1 margin-bottom-2">
 						{title}
 					</h1>
 					<div class="font-sans-sm text-base display-flex flex-align-center">
-						<span class="margin-right-2">Publicado: <FormattedDate date={pubDate} /></span>
+						<span class="margin-right-2 text-base-dark">Publicado: <FormattedDate date={pubDate} /></span>
 						{updatedDate && (
-							<span class="font-italic">
+							<span class="font-italic text-base">
 								(Actualizado: <FormattedDate date={updatedDate} />)
 							</span>
 						)}
 					</div>
 				</header>
 
+				<!-- Imagen Principal -->
 				{heroImage && (
-					<div class="margin-bottom-4 radius-md overflow-hidden shadow-2">
+					<div class="margin-bottom-5 radius-lg overflow-hidden shadow-2">
 						<Image width={1020} height={510} src={heroImage} alt={title} class="width-full height-auto display-block" />
 					</div>
 				)}
 
-				<div class="usa-prose font-sans-md line-height-sans-4 text-base-darkest">
+				<!-- Contenido del Artículo bajo clase USWDS Prose -->
+				<div class="usa-prose font-sans-md line-height-sans-4 text-base-darkest bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
 					<slot />
 				</div>
 			</article>

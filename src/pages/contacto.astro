@@ -1,0 +1,122 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { CONTACT, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead
+			title={`Contacto y Ubicación | ${SITE_TITLE}`}
+			description="Comunícate con sha256.us. Sede principal en Quíbor, Lara, Venezuela. Teléfonos, email y canales de atención pericial."
+		/>
+	</head>
+	<body class="bg-base-lightest font-sans">
+		<Header />
+		<main id="main-content" class="padding-y-6">
+			<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+				<!-- Header de página -->
+				<div class="margin-bottom-6 border-bottom-2px border-base-lighter padding-bottom-3">
+					<nav class="usa-breadcrumb margin-bottom-2" aria-label="Breadcrumbs">
+						<ol class="usa-breadcrumb__list display-flex list-style-none padding-0 margin-0 font-sans-xs">
+							<li class="usa-breadcrumb__item margin-right-1"><a href="/" class="usa-breadcrumb__link text-primary">Inicio</a> &gt;</li>
+							<li class="usa-breadcrumb__item usa-current text-base" aria-current="page">Contacto</li>
+						</ol>
+					</nav>
+					<span class="usa-tag bg-primary text-white margin-bottom-1">CANALES DE ATENCIÓN</span>
+					<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker margin-top-1 margin-bottom-2">
+						Contáctanos — Laboratorio sha256.us
+					</h1>
+					<p class="font-sans-md text-base-dark line-height-sans-4 maxw-tablet">
+						Estamos a tu disposición para atender consultas, recibir dispositivos por consignación y coordinar informes periciales.
+					</p>
+				</div>
+
+				<div class="grid-row grid-gap margin-bottom-8">
+					<!-- Formulario de Contacto USWDS -->
+					<div class="tablet:grid-col-7 margin-bottom-4 tablet:margin-bottom-0">
+						<div class="bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
+							<h2 class="font-sans-xl text-bold text-primary-darker margin-top-0 margin-bottom-2">
+								Envíanos un mensaje sobre tu caso
+							</h2>
+							<p class="font-sans-xs text-base-dark margin-bottom-4">
+								Completa la siguiente planilla para que un perito informático evalúe tu requerimiento a la brevedad.
+							</p>
+
+							<form class="usa-form maxw-full" onsubmit="event.preventDefault(); alert('Gracias por comunicarte con sha256.us. Te contactaremos pronto.');">
+								<label class="usa-label font-sans-xs text-bold" for="nombre">Nombre Completo o Empresa</label>
+								<input class="usa-input width-full" id="nombre" name="nombre" type="text" required />
+
+								<label class="usa-label font-sans-xs text-bold margin-top-2" for="email">Correo Electrónico</label>
+								<input class="usa-input width-full" id="email" name="email" type="email" required />
+
+								<label class="usa-label font-sans-xs text-bold margin-top-2" for="telefono">Teléfono / WhatsApp</label>
+								<input class="usa-input width-full" id="telefono" name="telefono" type="tel" placeholder="+58 / +57 ..." />
+
+								<label class="usa-label font-sans-xs text-bold margin-top-2" for="servicio">Tipo de Evidencia o Servicio</label>
+								<select class="usa-select width-full" id="servicio" name="servicio">
+									<option value="movil">Peritaje de Dispositivo Móvil (WhatsApp, Audios, etc.)</option>
+									<option value="disco">Reparación / Extracción de Disco o Servidor</option>
+									<option value="judicial">Informe Pericial Judicial con Cadena de Custodia</option>
+									<option value="otro">Otra consulta técnica</option>
+								</select>
+
+								<label class="usa-label font-sans-xs text-bold margin-top-2" for="mensaje">Detalles del caso</label>
+								<textarea class="usa-textarea width-full" id="mensaje" name="mensaje" rows="4" required></textarea>
+
+								<button class="usa-button usa-button--primary margin-top-3 width-full tablet:width-auto" type="submit">
+									Enviar Requerimiento
+								</button>
+							</form>
+						</div>
+					</div>
+
+					<!-- Datos de Contacto y Ubicación -->
+					<div class="tablet:grid-col-5">
+						<div class="bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter height-full display-flex flex-column">
+							<h2 class="font-sans-xl text-bold text-primary-darker margin-top-0 margin-bottom-3">
+								Información Oficial
+							</h2>
+
+							<div class="margin-bottom-3">
+								<span class="font-sans-3xs text-uppercase text-bold text-primary display-block margin-bottom-05">Sede Principal</span>
+								<p class="font-sans-xs text-base-dark line-height-sans-3 margin-0">
+									{CONTACT.address}
+								</p>
+							</div>
+
+							<div class="margin-bottom-3">
+								<span class="font-sans-3xs text-uppercase text-bold text-primary display-block margin-bottom-05">Líneas Telefónicas</span>
+								{CONTACT.phones.map((p) => (
+									<p class="font-sans-sm text-base-dark margin-y-05">
+										<a href={p.link} class="usa-link text-bold">{p.display}</a>
+									</p>
+								))}
+							</div>
+
+							<div class="margin-bottom-3">
+								<span class="font-sans-3xs text-uppercase text-bold text-primary display-block margin-bottom-05">Correo Electrónico</span>
+								<p class="font-sans-sm text-base-dark margin-0">
+									<a href={`mailto:${CONTACT.email}`} class="usa-link text-bold">{CONTACT.email}</a>
+								</p>
+							</div>
+
+							<div class="margin-top-auto border-top-1px border-base-lighter padding-top-3">
+								<span class="font-sans-3xs text-uppercase text-bold text-base display-block margin-bottom-1">Redes Sociales Oficiales</span>
+								<div class="display-flex gap-2">
+									<a href={CONTACT.social.linkedin} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline font-sans-3xs padding-y-1 padding-x-2">LinkedIn</a>
+									<a href={CONTACT.social.twitter} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline font-sans-3xs padding-y-1 padding-x-2">X</a>
+									<a href={CONTACT.social.instagram} target="_blank" rel="noopener noreferrer" class="usa-button usa-button--outline font-sans-3xs padding-y-1 padding-x-2">Instagram</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
