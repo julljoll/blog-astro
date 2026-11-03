@@ -6,53 +6,155 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to
-				build a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your{' '}
-				<code>astro.config.mjs</code> file. You can customize your setup with{' '}
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like
-				Tailwind, React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>
-					Edit this page in <code>src/pages/index.astro</code>
-				</li>
-				<li>
-					Edit the site header items in <code>src/components/Header.astro</code>
-				</li>
-				<li>
-					Add your name to the footer in <code>src/components/Footer.astro</code>
-				</li>
-				<li>
-					Check out the included blog posts in <code>src/content/blog/</code>
-				</li>
-				<li>
-					Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code>
-				</li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to{' '}
-				<a href="https://docs.astro.build/">read the docs</a> or{' '}
-				<a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out{' '}
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a> by{' '}
-				<a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+		<main id="main-content">
+			<!-- USWDS Hero Section -->
+			<section class="usa-hero bg-primary-darker text-white padding-y-6" aria-label="Introducción Principal">
+				<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+					<div class="usa-hero__callout bg-white text-base-darkest padding-4 radius-md maxw-mobile-lg shadow-2">
+						<span class="usa-tag bg-secondary-dark text-white margin-bottom-1">INFORMÁTICA FORENSE</span>
+						<h1 class="usa-hero__heading font-sans-2xl text-bold line-height-sans-2 text-primary-darker margin-top-0 margin-bottom-2">
+							Auditoría de dispositivos digitales
+						</h1>
+						<p class="font-sans-md text-base-dark line-height-sans-4 margin-bottom-3">
+							Precisa, confiable y profesional. Consolidamos medios de prueba judicial y analizamos evidencias digitales con tecnología de vanguardia para asegurar la validez legal de tus procesos.
+						</p>
+						<a class="usa-button usa-button--primary" href="#servicios">Conocer Servicios</a>
+						<a class="usa-button usa-button--outline margin-top-1 tablet:margin-top-0" href="/blog">Ver Blog</a>
+					</div>
+				</div>
+			</section>
+
+			<!-- USWDS Services Section -->
+			<section id="servicios" class="padding-y-6 bg-white">
+				<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+					<div class="text-center margin-bottom-5">
+						<h2 class="font-sans-xl text-bold text-primary-darker margin-bottom-1">Nuestros Servicios Principales</h2>
+						<p class="font-sans-md text-base line-height-sans-4 maxw-tablet margin-x-auto">
+							Análisis preliminar para diagnóstico por consignación y extracción experta de información.
+						</p>
+					</div>
+
+					<div class="grid-row grid-gap">
+						<div class="tablet:grid-col-6 margin-bottom-3 tablet:margin-bottom-0">
+							<div class="usa-card border-1px border-base-lighter radius-md padding-3 height-full shadow-1 bg-white">
+								<div class="display-flex flex-align-center margin-bottom-2">
+									<div class="bg-primary-light text-primary-darker padding-1 radius-md margin-right-2">
+										<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M20 18c1.1 0 1.99-.9 1.99-2L22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
+									</div>
+									<h3 class="font-sans-lg text-bold margin-0 text-primary-dark">Reparación, Extracción y Análisis</h3>
+								</div>
+								<p class="font-sans-sm text-base-dark line-height-sans-4">
+									Especializados en la reparación de unidades de almacenamiento dañadas para extraer la evidencia crucial para tu caso. Garantizamos una recuperación segura, estructurada e íntegra bajo estrictos procedimientos de laboratorio.
+								</p>
+							</div>
+						</div>
+
+						<div class="tablet:grid-col-6">
+							<div class="usa-card border-1px border-base-lighter radius-md padding-3 height-full shadow-1 bg-white">
+								<div class="display-flex flex-align-center margin-bottom-2">
+									<div class="bg-accent-cool-light text-primary-darker padding-1 radius-md margin-right-2">
+										<svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+									</div>
+									<h3 class="font-sans-lg text-bold margin-0 text-primary-dark">Forense de Dispositivos Móviles</h3>
+								</div>
+								<p class="font-sans-sm text-base-dark line-height-sans-4">
+									Validación y adquisición forense certificada de audios, fotografías, capturas, mensajería instantánea (WhatsApp, Telegram), redes sociales y correos electrónicos con cadena de custodia inalterable.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- USWDS Process / Workflow Section -->
+			<section class="padding-y-6 bg-base-lightest">
+				<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+					<div class="text-center margin-bottom-5">
+						<h2 class="font-sans-xl text-bold text-primary-darker margin-bottom-1">¿Qué debo hacer? — Primeros Pasos</h2>
+						<p class="font-sans-md text-base line-height-sans-4 maxw-tablet margin-x-auto">
+							Protocolo seguro y estructurado para la recepción y preservación de tu dispositivo.
+						</p>
+					</div>
+
+					<div class="grid-row grid-gap">
+						<div class="tablet:grid-col-3 margin-bottom-2 tablet:margin-bottom-0">
+							<div class="bg-white padding-3 radius-md border-top-05 border-primary height-full shadow-1">
+								<span class="font-sans-2xl text-bold text-primary opacity-50 display-block margin-bottom-1">01</span>
+								<h3 class="font-sans-md text-bold margin-top-0 margin-bottom-1">Cuéntanos tu caso</h3>
+								<p class="font-sans-xs text-base-dark">Entrevista preliminar técnica para definir qué evidencia es jurídicamente relevante.</p>
+							</div>
+						</div>
+						<div class="tablet:grid-col-3 margin-bottom-2 tablet:margin-bottom-0">
+							<div class="bg-white padding-3 radius-md border-top-05 border-primary height-full shadow-1">
+								<span class="font-sans-2xl text-bold text-primary opacity-50 display-block margin-bottom-1">02</span>
+								<h3 class="font-sans-md text-bold margin-top-0 margin-bottom-1">Consigna el equipo</h3>
+								<p class="font-sans-xs text-base-dark">Recepción formal en laboratorio y generación de la copia bit a bit (imagen forense).</p>
+							</div>
+						</div>
+						<div class="tablet:grid-col-3 margin-bottom-2 tablet:margin-bottom-0">
+							<div class="bg-white padding-3 radius-md border-top-05 border-primary height-full shadow-1">
+								<span class="font-sans-2xl text-bold text-primary opacity-50 display-block margin-bottom-1">03</span>
+								<h3 class="font-sans-md text-bold margin-top-0 margin-bottom-1">Devolución rápida</h3>
+								<p class="font-sans-xs text-base-dark">Retorno del dispositivo físico tras los protocolos de adquisición inicial.</p>
+							</div>
+						</div>
+						<div class="tablet:grid-col-3">
+							<div class="bg-white padding-3 radius-md border-top-05 border-primary height-full shadow-1">
+								<span class="font-sans-2xl text-bold text-primary opacity-50 display-block margin-bottom-1">04</span>
+								<h3 class="font-sans-md text-bold margin-top-0 margin-bottom-1">Planillas Oficiales</h3>
+								<p class="font-sans-xs text-base-dark">Cadena de custodia blindada para plena validez legal y procesal en tribunales.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- USWDS Standards Compliance -->
+			<section class="padding-y-6 bg-white">
+				<div class="grid-container maxw-desktop margin-x-auto padding-x-2">
+					<div class="text-center margin-bottom-4">
+						<h2 class="font-sans-xl text-bold text-primary-darker margin-bottom-1">Estándares Internacionales y Regulaciones</h2>
+						<p class="font-sans-md text-base line-height-sans-4">Rigor científico y metodológico en cada informe pericial.</p>
+					</div>
+
+					<div class="grid-row grid-gap">
+						<div class="mobile:grid-col-6 tablet:grid-col-3 margin-bottom-2">
+							<div class="border-1px border-base-light radius-md padding-2 bg-base-lightest text-center height-full">
+								<span class="usa-tag bg-primary text-white margin-bottom-1">ISO / IEC</span>
+								<h3 class="font-sans-md text-bold margin-y-05">IEC 27037</h3>
+								<p class="font-sans-3xs text-base margin-0">Directrices para la identificación, recopilación y preservación de evidencia digital.</p>
+							</div>
+						</div>
+						<div class="mobile:grid-col-6 tablet:grid-col-3 margin-bottom-2">
+							<div class="border-1px border-base-light radius-md padding-2 bg-base-lightest text-center height-full">
+								<span class="usa-tag bg-primary text-white margin-bottom-1">ISO / IEC</span>
+								<h3 class="font-sans-md text-bold margin-y-05">IEC 27042</h3>
+								<p class="font-sans-3xs text-base margin-0">Estándar para el análisis pericial y la interpretación de evidencia digital.</p>
+							</div>
+						</div>
+						<div class="mobile:grid-col-6 tablet:grid-col-3 margin-bottom-2">
+							<div class="border-1px border-base-light radius-md padding-2 bg-base-lightest text-center height-full">
+								<span class="usa-tag bg-secondary-dark text-white margin-bottom-1">NIST USA</span>
+								<h3 class="font-sans-md text-bold margin-y-05">NIST SP 800</h3>
+								<p class="font-sans-3xs text-base margin-0">Guías técnicas de informática forense para dispositivos y redes de NIST.</p>
+							</div>
+						</div>
+						<div class="mobile:grid-col-6 tablet:grid-col-3 margin-bottom-2">
+							<div class="border-1px border-base-light radius-md padding-2 bg-base-lightest text-center height-full">
+								<span class="usa-tag bg-accent-warm text-ink margin-bottom-1">NACIONAL</span>
+								<h3 class="font-sans-md text-bold margin-y-05">MUCC-2017</h3>
+								<p class="font-sans-3xs text-base margin-0">Manual Único para Cadena de Custodia de Evidencias Físicas y Digitales.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
