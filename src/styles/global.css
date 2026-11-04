@@ -14,9 +14,15 @@
   box-sizing: border-box !important;
   max-width: 100% !important;
   margin-right: 0 !important;
+  height: auto !important;
+  min-height: 2.75rem !important;
+  line-height: 1.25 !important;
+  padding: 0.75rem 1.25rem !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
   word-break: normal;
-  overflow-wrap: break-word;
-  text-overflow: ellipsis;
+  overflow-wrap: normal;
   vertical-align: middle;
 }
 
@@ -36,11 +42,13 @@
 
 /* Buttons inside cards or narrow sidebars */
 .usa-card .usa-button,
+.sha-blog-card .usa-button,
 .bg-primary-lighter .usa-button,
 .bg-accent-cool-lighter .usa-button {
   max-width: 100% !important;
   margin-left: 0 !important;
   margin-right: 0 !important;
+  width: 100% !important;
 }
 
 /* 4. Editorial Layout Styles (3 Column Newspaper/Magazine Typography) */
