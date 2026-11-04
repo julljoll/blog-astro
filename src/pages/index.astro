@@ -6,7 +6,7 @@ import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
 import HeroCarousel from '../components/HeroCarousel.astro';
-import { CONTACT, SITE_DESCRIPTION, SITE_TITLE, STANDARDS } from '../consts';
+import { SITE_DESCRIPTION, SITE_TITLE, STANDARDS } from '../consts';
 
 const latestPosts = (await getCollection('blog'))
 	.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
@@ -220,11 +220,6 @@ const latestPosts = (await getCollection('blog'))
 					</div>
 					<div class="sha-cta-banner__actions">
 						<a href="/contacto" class="usa-button usa-button--big sha-cta-banner__btn-primary">Contactar sha256.us</a>
-						<div class="sha-cta-banner__phones">
-							{CONTACT.phones.map((p) => (
-								<a href={p.link} class="sha-cta-banner__phone">{p.display}</a>
-							))}
-						</div>
 					</div>
 				</div>
 			</section>
@@ -518,7 +513,7 @@ const latestPosts = (await getCollection('blog'))
   .sha-cta-banner__text { flex: 1; min-width: 280px; }
   .sha-cta-banner__title { font-size: clamp(1.2rem, 2vw, 1.6rem); font-weight: 700; color: #fff; margin: 0 0 0.5rem 0; }
   .sha-cta-banner__sub { font-size: 0.9rem; color: rgba(255,255,255,0.78); line-height: 1.6; margin: 0; }
-  .sha-cta-banner__actions { display: flex; flex-direction: column; gap: 0.75rem; align-items: flex-start; }
+  .sha-cta-banner__actions { display: flex; align-items: center; flex-shrink: 0; }
   .sha-cta-banner__btn-primary {
     background: #d83933 !important;
     border-color: #d83933 !important;
@@ -526,9 +521,7 @@ const latestPosts = (await getCollection('blog'))
     max-width: 100%;
     box-sizing: border-box;
     text-align: center;
+    margin: 0 !important;
   }
   .sha-cta-banner__btn-primary:hover { background: #b50909 !important; border-color: #b50909 !important; }
-  .sha-cta-banner__phones { display: flex; flex-direction: column; gap: 0.2rem; }
-  .sha-cta-banner__phone { font-size: 0.82rem; color: rgba(255,255,255,0.7); text-decoration: none; }
-  .sha-cta-banner__phone:hover { color: #fff; }
 </style>

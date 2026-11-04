@@ -4,16 +4,22 @@ export const SITE_DESCRIPTION = 'Auditoría de dispositivos digitales, informát
 export const SITE_URL = 'https://sha256.us';
 
 export const CONTACT = {
+	phone: {
+		display: '+57 316 3931945',
+		link: 'tel:+573163931945',
+		whatsapp: 'https://wa.me/573163931945',
+	},
 	phones: [
-		{ display: '+58 424 5585474', link: 'tel:+584245585474' },
 		{ display: '+57 316 3931945', link: 'tel:+573163931945' },
 	],
+	whatsapp: 'https://wa.me/573163931945',
 	email: 'soporte@sha256.us',
 	address: 'Avenida 6 con Calle 7, Edificio Mercantil La Ceiba, Primer Piso, Oficina N° 8, Quíbor, Estado Lara, Venezuela.',
 	social: {
 		linkedin: 'https://www.linkedin.com/in/julljoll/',
 		twitter: 'https://x.com/sha256us',
 		instagram: 'https://www.instagram.com/sha256.us',
+		whatsapp: 'https://wa.me/573163931945',
 	},
 };
 

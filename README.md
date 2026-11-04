@@ -272,8 +272,7 @@ Edita el archivo [`src/consts.ts`](./src/consts.ts) para actualizar:
 | Canal | Información |
 | :---- | :---------- |
 | 📧 Email | soporte@sha256.us |
-| 📞 Venezuela | +58 424 5585474 |
-| 📞 Colombia | +57 316 3931945 |
+| 💬 WhatsApp / Teléfono | [+57 316 3931945](https://wa.me/573163931945) |
 | 📍 Sede | Av. 6 con Calle 7, Edif. Mercantil La Ceiba, 1er Piso, Ofic. N° 8, Quíbor, Lara, Venezuela |
 | 🔗 LinkedIn | [linkedin.com/in/julljoll](https://www.linkedin.com/in/julljoll/) |
 | 🐦 X (Twitter) | [@sha256us](https://x.com/sha256us) |
