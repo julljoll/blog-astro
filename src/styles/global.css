@@ -3,3 +3,42 @@
 
 /* 2. Tailwind CSS v4 */
 @import "tailwindcss";
+
+/* 3. Global Button Overflow Fixes & Box Model Normalization */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* Fix USWDS buttons overflowing containers due to width: 100% or default margin-right */
+.usa-button {
+  box-sizing: border-box !important;
+  max-width: 100% !important;
+  margin-right: 0 !important;
+  word-break: normal;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
+  vertical-align: middle;
+}
+
+/* When in flex containers, prevent shrinking awkwardly or breaking layout */
+.display-flex > .usa-button,
+.flex > .usa-button {
+  flex-shrink: 0;
+}
+
+/* Ensure buttons styled with width-full fit cleanly within padded parents */
+.usa-button.width-full,
+.width-full.usa-button {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+/* Buttons inside cards or narrow sidebars */
+.usa-card .usa-button,
+.bg-primary-lighter .usa-button,
+.bg-accent-cool-lighter .usa-button {
+  max-width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}

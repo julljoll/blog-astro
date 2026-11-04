@@ -410,7 +410,9 @@ const latestPosts = (await getCollection('blog'))
     background: #d83933 !important;
     border-color: #d83933 !important;
     color: #fff !important;
-    white-space: nowrap;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
   }
   .sha-cta-banner__btn-primary:hover { background: #b50909 !important; border-color: #b50909 !important; }
   .sha-cta-banner__phones { display: flex; flex-direction: column; gap: 0.2rem; }
