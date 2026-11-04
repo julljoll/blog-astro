@@ -181,7 +181,7 @@ const latestPosts = (await getCollection('blog'))
 									<a href={`/blog/${post.id}/`}>{post.data.title}</a>
 								</h3>
 								<p class="sha-blog-card__desc">{post.data.description}</p>
-								<a href={`/blog/${post.id}/`} class="sha-link">Leer artículo completo →</a>
+								<a href={`/blog/${post.id}/`} class="usa-button usa-button--primary sha-blog-card__btn">Leer artículo completo &rarr;</a>
 							</div>
 						))}
 					</div>
@@ -382,6 +382,24 @@ const latestPosts = (await getCollection('blog'))
   .sha-blog-card__title a { color: #1a2b4b; text-decoration: none; }
   .sha-blog-card__title a:hover { color: #005ea2; text-decoration: underline; }
   .sha-blog-card__desc { font-size: 0.85rem; color: #3d4551; line-height: 1.6; margin: 0; flex: 1; }
+  .sha-blog-card__btn {
+    margin-top: 1rem !important;
+    width: 100% !important;
+    font-size: 0.85rem !important;
+    padding: 0.65rem 1rem !important;
+    text-align: center !important;
+    background-color: #005ea2 !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    border-radius: 4px !important;
+    transition: background-color 0.2s ease, transform 0.15s ease !important;
+    text-decoration: none !important;
+  }
+  .sha-blog-card__btn:hover {
+    background-color: #0050a4 !important;
+    transform: translateY(-1px);
+    text-decoration: none !important;
+  }
 
   /* Ghost button */
   .sha-btn-ghost {
