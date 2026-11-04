@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
@@ -164,25 +165,47 @@ const latestPosts = (await getCollection('blog'))
 			<!-- ======= LATEST POSTS ======= -->
 			<section class="sha-section sha-section--light">
 				<div class="sha-container">
-					<div class="sha-section__header display-flex flex-wrap flex-justify-between flex-align-end">
+					<div class="sha-blog-header">
 						<div>
 							<span class="usa-tag sha-tag--secondary">DIVULGACIÓN TÉCNICA</span>
 							<h2 class="sha-section__title margin-top-1 margin-bottom-0">Noticias & Casos de Investigación</h2>
 						</div>
-						<a href="/blog" class="usa-button usa-button--outline sha-btn-ghost margin-top-3 tablet:margin-top-0">Ver todo el Blog</a>
+						<a href="/blog" class="usa-button usa-button--outline sha-btn-ghost">Ver todo el Blog</a>
 					</div>
 					<div class="sha-blog-grid">
 						{latestPosts.map((post) => (
-							<div class="sha-blog-card">
-								<div class="sha-blog-card__date">
-									<FormattedDate date={post.data.pubDate} />
+							<article class="sha-blog-card">
+								{post.data.heroImage && (
+									<div class="sha-blog-card__media">
+										<a href={`/blog/${post.id}/`} class="display-block overflow-hidden width-full height-full">
+											<Image
+												width={640}
+												height={340}
+												src={post.data.heroImage}
+												alt={post.data.title}
+												class="sha-blog-card__img"
+											/>
+										</a>
+									</div>
+								)}
+								<div class="sha-blog-card__body">
+									<div class="sha-blog-card__meta">
+										<span class="usa-tag bg-base-light text-base-darkest font-sans-3xs">
+											{post.data.category || 'Investigación'}
+										</span>
+										<span class="sha-blog-card__date">
+											<FormattedDate date={post.data.pubDate} />
+										</span>
+									</div>
+									<h3 class="sha-blog-card__title">
+										<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+									</h3>
+									<p class="sha-blog-card__desc">{post.data.description}</p>
+									<a href={`/blog/${post.id}/`} class="usa-button usa-button--primary sha-blog-card__btn">
+										Leer artículo completo &rarr;
+									</a>
 								</div>
-								<h3 class="sha-blog-card__title">
-									<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-								</h3>
-								<p class="sha-blog-card__desc">{post.data.description}</p>
-								<a href={`/blog/${post.id}/`} class="usa-button usa-button--primary sha-blog-card__btn">Leer artículo completo &rarr;</a>
-							</div>
+							</article>
 						))}
 					</div>
 				</div>
@@ -360,28 +383,98 @@ const latestPosts = (await getCollection('blog'))
   .sha-standard__title { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: #565c65; letter-spacing: 0.05em; }
   .sha-standard__desc { font-size: 0.8rem; color: #3d4551; line-height: 1.6; margin: 0.35rem 0 0 0; }
 
-  /* ====== BLOG CARDS ====== */
+  /* ====== BLOG SECTION & CARDS ====== */
+  .sha-blog-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
   .sha-blog-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 380px));
     gap: 1.5rem;
+  }
+  @media (max-width: 640px) {
+    .sha-blog-grid {
+      grid-template-columns: 1fr;
+    }
   }
   .sha-blog-card {
     background: #fff;
     border: 1px solid #dfe1e2;
-    border-left: 4px solid #005ea2;
-    padding: 1.5rem;
+    border-top: 3px solid #005ea2;
+    border-radius: 8px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    transition: box-shadow 0.2s;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s ease, transform 0.15s ease;
   }
-  .sha-blog-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.09); }
-  .sha-blog-card__date { font-size: 0.72rem; color: #71767a; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
-  .sha-blog-card__title { font-size: 1rem; font-weight: 700; margin: 0; line-height: 1.35; }
-  .sha-blog-card__title a { color: #1a2b4b; text-decoration: none; }
-  .sha-blog-card__title a:hover { color: #005ea2; text-decoration: underline; }
-  .sha-blog-card__desc { font-size: 0.85rem; color: #3d4551; line-height: 1.6; margin: 0; flex: 1; }
+  .sha-blog-card:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    transform: translateY(-2px);
+  }
+  .sha-blog-card__media {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background-color: #f0f2f5;
+  }
+  .sha-blog-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+  .sha-blog-card:hover .sha-blog-card__img {
+    transform: scale(1.04);
+  }
+  .sha-blog-card__body {
+    padding: 1.25rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 0.65rem;
+  }
+  .sha-blog-card__meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.25rem;
+  }
+  .sha-blog-card__date {
+    font-size: 0.72rem;
+    color: #71767a;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .sha-blog-card__title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin: 0;
+    line-height: 1.35;
+  }
+  .sha-blog-card__title a {
+    color: #1a2b4b;
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .sha-blog-card__title a:hover {
+    color: #005ea2;
+    text-decoration: underline;
+  }
+  .sha-blog-card__desc {
+    font-size: 0.85rem;
+    color: #3d4551;
+    line-height: 1.6;
+    margin: 0;
+    flex: 1;
+  }
   .sha-blog-card__btn {
     margin-top: 1rem !important;
     width: 100% !important;
@@ -394,6 +487,8 @@ const latestPosts = (await getCollection('blog'))
     border-radius: 4px !important;
     transition: background-color 0.2s ease, transform 0.15s ease !important;
     text-decoration: none !important;
+    display: block;
+    box-sizing: border-box;
   }
   .sha-blog-card__btn:hover {
     background-color: #0050a4 !important;
