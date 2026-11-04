@@ -94,11 +94,21 @@ Ejecutar desde la raíz del proyecto en una terminal:
 
 ## ✍️ Cómo publicar nuevos artículos en el Blog
 
+### 📄 Plantilla Maestra Editorial SEO
+Se ha preparado un archivo modelo completo con todas las indicaciones comentadas en el código:
+[`src/content/blog/articulo-de-prueba.md`](./src/content/blog/articulo-de-prueba.md)
+
+Para crear un nuevo artículo:
+1. Copia y pega el archivo `src/content/blog/articulo-de-prueba.md` con un nuevo nombre (ej: `cadena-de-custodia-digital.md`).
+2. Sigue las instrucciones y comentarios `<!-- ... -->` dentro del archivo indicando qué pegar en cada sección.
+
+---
+
 ### Paso 1 — Crear el archivo del artículo
 
 Crea un nuevo archivo `.md` o `.mdx` dentro de la carpeta:
 
-```
+```text
 src/content/blog/
 ```
 
@@ -108,56 +118,58 @@ El nombre del archivo se convierte en la URL del artículo. Ejemplos:
 
 ---
 
-### Paso 2 — Agregar el frontmatter obligatorio
+### Paso 2 — Configurar el Frontmatter SEO
 
-Cada artículo debe comenzar con un bloque de **frontmatter YAML** entre `---`. Este bloque define el título, fecha, imagen destacada y descripción:
+Cada artículo debe comenzar con un bloque de **frontmatter YAML** entre `---`:
 
 ```markdown
 ---
-title: 'Tu Título del Artículo Aquí'
-description: 'Descripción breve para SEO y la vista previa en el listado del blog.'
-pubDate: 'Nov 10 2024'
-updatedDate: 'Nov 15 2024'  # Opcional: fecha de la última actualización
-heroImage: '../../assets/blog-placeholder-1.jpg'  # Imagen destacada (opcional)
+title: "La ilusión de la invulnerabilidad: Por qué tu mayor brecha de ciberseguridad es humana"
+description: "Artículo de opinión pericial: el eslabón humano define el éxito o fracaso judicial en ciberseguridad. Análisis forense bajo norma ISO 27037 y prevención."
+pubDate: 2026-11-04
+updatedDate: 2026-11-04
+author: "Equipo Pericial sha256.us"
+tags: ["ciberseguridad", "informatica-forense", "ingenieria-social", "cadena-de-custodia", "iso-27037"]
+category: "Opinión Pericial"
+heroImage: "../../assets/blog-placeholder-1.jpg"
+seoKeyword: "brecha de ciberseguridad humana"
+readingTime: 5
+featured: true
+draft: false
 ---
 ```
 
-#### Propiedades del frontmatter:
+#### Propiedades del frontmatter y directrices SEO:
 
-| Propiedad       | Tipo     | Requerido | Descripción |
-| :-------------- | :------- | :-------- | :---------- |
-| `title`         | `string` | ✅ Sí      | Título principal del artículo |
-| `description`   | `string` | ✅ Sí      | Descripción SEO (aparece en listados y meta tags) |
-| `pubDate`       | `Date`   | ✅ Sí      | Fecha de publicación. Formato: `'Nov 10 2024'` |
-| `updatedDate`   | `Date`   | No        | Fecha de última actualización (opcional) |
-| `heroImage`     | `string` | No        | Ruta relativa a la imagen destacada en `src/assets/` |
+| Propiedad | Tipo | Requerido | Directriz SEO para Google |
+| :--- | :--- | :--- | :--- |
+| `title` | `string` | ✅ Sí | 50 a 60 caracteres. Incluye la palabra clave al inicio. Genera el `<h1>` automáticamente. |
+| `description` | `string` | ✅ Sí | 145 a 160 caracteres. Resumen persuasivo que actúa como meta descripción en Google. |
+| `pubDate` | `Date` | ✅ Sí | Fecha de publicación (formato `AAAA-MM-DD`). |
+| `updatedDate` | `Date` | No | Fecha de actualización para frescura algorítmica de Google. |
+| `author` | `string` | No | Señal E-E-A-T (Experiencia y Confiabilidad) requerida por Google. |
+| `tags` | `array` | No | 3 a 5 palabras clave temáticas (ej: `["ciberseguridad", "forense"]`). |
+| `category` | `string` | No | Categoría principal (ej: `Opinión Pericial`, `Guía Técnica`). |
+| `heroImage` | `string` | No | Imagen de cabecera en `src/assets/` (proporción óptima 1200x630 px). |
+| `seoKeyword` | `string` | No | Palabra clave objetivo para auditoría interna. |
+| `readingTime` | `number` | No | Minutos de lectura estimados. |
+| `featured` | `boolean`| No | `true` para destacar en la página principal. |
+| `draft` | `boolean`| No | `true` para mantener en borrador sin publicar. |
 
 ---
 
-### Paso 3 — Escribir el contenido en Markdown
+### Paso 3 — Estructura Editorial en 3 Columnas y Clases CSS
 
-Después del bloque `---`, escribe el contenido usando **Markdown estándar**:
+El formato editorial incluye clases CSS preconfiguradas para maximizar el tiempo de permanencia (*Dwell Time*) y ganar fragmentos destacados (*Featured Snippets*):
 
-```markdown
----
-title: 'Cadena de Custodia Digital: Guía Práctica'
-description: 'Cómo garantizar la integridad de la evidencia digital bajo MUCC-2017.'
-pubDate: 'Nov 10 2024'
-heroImage: '../../assets/blog-placeholder-2.jpg'
----
-
-## Introducción
-
-La **cadena de custodia** es el registro cronológico y documentado de todas las
-personas que han tenido acceso a una evidencia digital desde su recolección
-hasta su presentación ante el tribunal.
-
-### ¿Por qué es importante?
-
-Sin una cadena de custodia adecuada, cualquier evidencia puede ser impugnada
-y descartada durante un juicio.
-
-## Pasos para implementarla
+1. **Entradilla (`editorial-lead`):** Primer párrafo de impacto que responde directamente a la intención de búsqueda en las primeras 100 palabras.
+2. **Cita destacada (`editorial-quote`):** Frase memorable tipo pull quote que rompe la monotonía visual.
+3. **Columnas editoriales (`editorial-three-columns`):** Disposición en 3 columnas en desktop, 2 en tablet y 1 en móvil.
+4. **Bloques no cortables (`editorial-col`):** Envuelve cada sección para evitar rupturas antiestéticas entre columnas.
+5. **Letra capitular (`editorial-dropcap`):** Letra grande de diario para el primer párrafo.
+6. **Subtítulos semánticos (`<h2 class="editorial-subhead">`):** Encabezados H2 para indexación semántica en Google.
+7. **Cajas de lección (`editorial-box`):** Destaca normas (ISO 27037, NIST), checklists o jurisprudencia.
+8. **Bio del autor (`editorial-author-box`):** Bloque al pie del artículo con acreditación E-E-A-T y llamada a consulta pericial.
 
 1. **Identificación** del medio digital (número de serie, marca, modelo).
 2. **Adquisición forense** con dispositivo de bloqueo de escritura.

@@ -8,13 +8,13 @@ import Header from '../components/Header.astro';
 
 type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, author, category, tags } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={`${title} | sha256.us`} description={description} />
+		<BaseHead title={`${title} | sha256.us`} description={description} image={heroImage} />
 	</head>
 
 	<body class="bg-base-lightest font-sans">
@@ -24,8 +24,14 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 				<!-- Encabezado del artículo -->
 				<header class="margin-bottom-4 border-bottom-1px border-base-lighter padding-bottom-3">
 					<div class="display-flex flex-wrap flex-align-center gap-1 margin-bottom-1">
-						<span class="usa-tag bg-primary-dark text-white">Artículo de Opinión</span>
-						<span class="usa-tag bg-secondary-dark text-white">Ciberseguridad & Peritaje</span>
+						{category ? (
+							<span class="usa-tag bg-primary-dark text-white text-uppercase">{category}</span>
+						) : (
+							<span class="usa-tag bg-primary-dark text-white">Investigación</span>
+						)}
+						{tags && tags.slice(0, 3).map((tag: string) => (
+							<span class="usa-tag bg-secondary-dark text-white font-mono text-3xs">#{tag}</span>
+						))}
 					</div>
 					<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker line-height-sans-2 margin-top-1 margin-bottom-2">
 						{title}
@@ -40,7 +46,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 								(Actualizado: <FormattedDate date={updatedDate} />)
 							</span>
 						)}
-						<span class="text-base">&bull; Por Equipo Pericial sha256.us</span>
+						<span class="text-base">&bull; Por {author || 'Equipo Pericial sha256.us'}</span>
 					</div>
 				</header>
 
