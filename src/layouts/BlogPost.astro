@@ -20,32 +20,39 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 	<body class="bg-base-lightest font-sans">
 		<Header />
 		<main id="main-content" class="padding-y-6">
-			<article class="grid-container maxw-tablet margin-x-auto padding-x-2">
+			<article class="grid-container maxw-desktop margin-x-auto padding-x-2">
 				<!-- Encabezado del artículo -->
 				<header class="margin-bottom-4 border-bottom-1px border-base-lighter padding-bottom-3">
-					<span class="usa-tag bg-primary-dark text-white margin-bottom-1">Publicación Técnica</span>
+					<div class="display-flex flex-wrap flex-align-center gap-1 margin-bottom-1">
+						<span class="usa-tag bg-primary-dark text-white">Artículo de Opinión</span>
+						<span class="usa-tag bg-secondary-dark text-white">Ciberseguridad & Peritaje</span>
+					</div>
 					<h1 class="font-sans-2xl tablet:font-sans-3xl text-bold text-primary-darker line-height-sans-2 margin-top-1 margin-bottom-2">
 						{title}
 					</h1>
-					<div class="font-sans-sm text-base display-flex flex-align-center">
-						<span class="margin-right-2 text-base-dark">Publicado: <FormattedDate date={pubDate} /></span>
+					<p class="font-sans-md text-base-dark line-height-sans-3 maxw-tablet margin-top-0 margin-bottom-2">
+						{description}
+					</p>
+					<div class="font-sans-sm text-base display-flex flex-wrap flex-align-center gap-2">
+						<span class="text-base-dark">Publicado: <FormattedDate date={pubDate} /></span>
 						{updatedDate && (
 							<span class="font-italic text-base">
 								(Actualizado: <FormattedDate date={updatedDate} />)
 							</span>
 						)}
+						<span class="text-base">&bull; Por Equipo Pericial sha256.us</span>
 					</div>
 				</header>
 
 				<!-- Imagen Principal -->
 				{heroImage && (
 					<div class="margin-bottom-5 radius-lg overflow-hidden shadow-2">
-						<Image width={1020} height={510} src={heroImage} alt={title} class="width-full height-auto display-block" />
+						<Image width={1200} height={560} src={heroImage} alt={title} class="width-full height-auto display-block" />
 					</div>
 				)}
 
-				<!-- Contenido del Artículo bajo clase USWDS Prose -->
-				<div class="usa-prose font-sans-md line-height-sans-4 text-base-darkest bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
+				<!-- Contenido del Artículo -->
+				<div class="usa-prose maxw-none font-sans-md line-height-sans-4 text-base-darkest bg-white padding-4 tablet:padding-6 radius-lg shadow-1 border-1px border-base-lighter">
 					<slot />
 				</div>
 			</article>

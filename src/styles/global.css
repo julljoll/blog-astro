@@ -42,3 +42,114 @@
   margin-left: 0 !important;
   margin-right: 0 !important;
 }
+
+/* 4. Editorial Layout Styles (3 Column Newspaper/Magazine Typography) */
+.editorial-container {
+  max-width: 100%;
+}
+
+.editorial-lead {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  color: #1b1b1b;
+  font-weight: 500;
+  border-left: 4px solid #005ea2;
+  padding-left: 1rem;
+  margin-bottom: 2rem;
+  background-color: #f8fafc;
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  border-radius: 0 4px 4px 0;
+}
+
+.editorial-quote {
+  border-top: 2px solid #005ea2;
+  border-bottom: 2px solid #005ea2;
+  padding: 1.25rem 0;
+  margin: 2rem 0;
+  text-align: center;
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 700;
+  color: #1a2b4b;
+  line-height: 1.4;
+}
+
+.editorial-three-columns {
+  column-count: 1;
+  column-gap: 2.25rem;
+  column-rule: 1px solid #dfe1e2;
+  text-align: justify;
+  hyphens: auto;
+}
+
+@media (min-width: 768px) {
+  .editorial-three-columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .editorial-three-columns {
+    column-count: 3;
+  }
+}
+
+.editorial-col {
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+}
+
+.editorial-dropcap {
+  float: left;
+  font-size: 3.5rem;
+  line-height: 0.8;
+  font-weight: 800;
+  color: #005ea2;
+  padding-top: 4px;
+  padding-right: 8px;
+  padding-bottom: 2px;
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.editorial-subhead {
+  break-after: avoid;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #1a2b4b;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px dashed #71767a;
+  padding-bottom: 0.25rem;
+  line-height: 1.3;
+}
+
+.editorial-box {
+  break-inside: avoid;
+  background-color: #f0f2f5;
+  border: 1px solid #c9cdd1;
+  border-top: 3px solid #d83933;
+  padding: 1rem;
+  border-radius: 2px;
+  margin: 1.25rem 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+.editorial-box h4 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #1a2b4b;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.editorial-author-box {
+  margin-top: 2.5rem;
+  padding: 1.25rem;
+  background-color: #f8f9fa;
+  border-left: 4px solid #005ea2;
+  border-radius: 0 4px 4px 0;
+}
